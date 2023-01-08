@@ -11,15 +11,18 @@ export const AppContext = createContext()
 
 export default function Home() {
   const [board, setBoard] =useState(boardDeafult)
+  const [currAttempt, setCurrAttempt] = useState({attempt: 0, letterPos: 0})
 
   return (
     <div className= "App">
       <nav>
         <h1>Jordle</h1>
       </nav>
-      <AppContext.Provider value ={{board, setBoard}}>
+      <AppContext.Provider value ={{board, setBoard, currAttempt, setCurrAttempt}}>
+        <div className="game">
         <Board/>
         <Keyboard/>
+        </div>
       </AppContext.Provider>
     </div>
   )
