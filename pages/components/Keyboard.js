@@ -21,8 +21,10 @@ export default function Keyboard() {
         <Key keyVal={"ENTER"} bigKey/>
         {keys3.map((key)=>{
           return <Key keyVal={key}/>
-        })}</div>
+        })}
         <Key keyVal={"DELETE"} bigKey/>
+        </div>
+        
       </div>
     )
   }
