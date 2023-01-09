@@ -5,14 +5,16 @@ import { AppContext } from '..'
 
 export default function Key ({keyVal, bigKey}){
     
-    const {board, setBoard, currAttempt, setCurrAttempt} = useContext(AppContext)
+    const {board, setBoard, currAttempt, setCurrAttemp, onDelete, onEnter, onSelectLetter} = useContext(AppContext)
     const selectLetter = () =>{
         //return to end the function
-        if(currAttempt.letterPos > 4) return 
-        const newBoard = [...board]
-        newBoard[currAttempt.attempt][currAttempt.letterPos] = keyVal
-        setBoard(newBoard)
-        setCurrAttempt({...currAttempt, letterPos: currAttempt.letterPos+1})
+        if(keyVal === "ENTER"){
+         onEnter()
+        } else if(keyVal === "DELETE"){
+         onDelete()
+        } else {
+         onSelectLetter(keyVal)
+        }
     }
 return <div className="key" id={bigKey && "big"} onClick={selectLetter}>{keyVal}</div>
 }
