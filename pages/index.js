@@ -4,9 +4,10 @@ import {useEffect, useState, useRef} from 'react'
 import Board from './components/Board'
 import Keyboard from './components/Keyboard'
 import SuperWord from './components/SuperWord'
-import { boardDeafult } from './Words'
+import { boardDeafult, generateWordSet } from './Words'
 import { createContext } from 'react'
 export const AppContext = createContext()
+
 //Gotta think of some ways to expand this. Prob have a super word. Probably 7 letter word.
 
 export default function Home() {
