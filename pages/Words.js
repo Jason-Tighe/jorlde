@@ -1,4 +1,4 @@
-import wordBank from './components/wordle-bank.txt'
+import wordBank from './api/wordle-bank.txt'
 
 
 export const boardDeafult = [
