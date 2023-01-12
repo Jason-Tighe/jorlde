@@ -11,7 +11,7 @@ const letterState = currAttempt.attempt > attemptVal && (correct ? "correct" : a
 
 useEffect(()=>{
 if(letter !== "" && !correct && !almost){
-    setDisabledLetter([...disabledLetters, letter])
+    setDisabledLetter((prev)=>[...prev, letter])
 }
 }, [currAttempt.attempt])
 
