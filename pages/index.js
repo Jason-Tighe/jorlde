@@ -13,6 +13,14 @@ export const AppContext = createContext()
 export default function Home() {
   const [board, setBoard] =useState(boardDeafult)
   const [currAttempt, setCurrAttempt] = useState({attempt: 0, letterPos: 0})
+  const [wordSet, setWordSet] = useState(new Set())
+  const [disabledLetters, setDisabledLetter] = useState([])
+
+  useEffect(()=>{
+    generateWordSet().then((words)=>{
+      setWordSet(words.wordSet)
+    })
+  }, [])
 
   const correctWord = "RIGHT"
 
@@ -34,7 +42,22 @@ export default function Home() {
 
   const onEnter = () =>{
     if(currAttempt.letterPos !== 5) return;
-    setCurrAttempt({attempt: currAttempt.attempt +1, letterPos: 0})
+
+    let currentWord = ""
+    for(i=0; i<5; i++){
+      currentWord += board[currAttempt.attempt][i]
+    }
+
+    if(wordSet.has(currentWord.toLowerCase())){
+      setCurrAttempt({attempt: currAttempt.attempt +1, letterPos: 0})
+    } else {
+       alert("Word not found")
+    }
+
+    if(currentWord == correctWord){
+      alert("NICE")
+    }
+
   }
 
   return (
@@ -42,7 +65,7 @@ export default function Home() {
       <nav>
         <h1>Jordle</h1>
       </nav>
-      <AppContext.Provider value ={{board, setBoard, currAttempt, setCurrAttempt, onDelete, onEnter, onSelectLetter, correctWord}}>
+      <AppContext.Provider value ={{board, setBoard, currAttempt, setCurrAttempt, onDelete, onEnter, onSelectLetter, correctWord, disabledLetters, setDisabledLetter}}>
         <div className="game">
         <Board/>
         <Keyboard/>

@@ -1,7 +1,8 @@
-import wordBank from './wordle-bank.txt'
+import wordBank from './components/wordle-bank.txt'
 
 
-export const boardDeafult = [[" ", " ", " ", " ", " "],
+export const boardDeafult = [
+[" ", " ", " ", " ", " "],
 [" ", " ", " ", " ", " "], 
 [" ", " ", " ", " ", " "], 
 [" ", " ", " ", " ", " "], 
